@@ -41,7 +41,10 @@ monkey = createSprite(50,200,20,50);
   invisibleGround = createSprite(275,260,650,10);
 invisibleGround.visible = false;
   
-     
+  gameOver = createSprite(300,150)
+  gameOver.addImage(gameOverImage)  
+  gameOver.visible = false   
+
  SurvivalTime = 0;
   score = 0;
 }
@@ -64,7 +67,7 @@ function draw() {
    if(bananaGroup.isTouching(monkey)){
      bananaGroup.destroyEach()
     score = score + 1;
-    monkey.scale += + 0.01 
+    monkey.scale += + 0.05
   }
   
      }
@@ -87,9 +90,9 @@ function draw() {
    obstaclesGroup.setVelocityXEach(0);
      bananaGroup.setVelocityXEach(0);
      bananaGroup.destroyEach()
-     obstacleGroup.destroyEach()
+     obstaclesGroup.destroyEach()
       monkey.changeAnimation("collided",monkeyStop_collided)
-     
+     gameOver.visible = true
      ground.velocityX = 0;
     }
   
